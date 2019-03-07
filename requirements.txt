@@ -1,2 +1,6 @@
 Flask>=1.0.2
 twilio~=6.0.0
+requests
+torch
+torchvision
+fastai==1.0.44

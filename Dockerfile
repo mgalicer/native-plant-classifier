@@ -1,11 +1,16 @@
-FROM python:3.6
+FROM python:3.6 as base 
 
-WORKDIR /app
+FROM base as builder
 
-COPY . /app
-
+COPY requirements.txt /
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+FROM base
+
+COPY --from=builder /install /usr/local
+WORKDIR /app
+COPY . /app
 
 EXPOSE 80
 
-CMD [ "python", "app.py" ]
+CMD [ "gunicorn",  "wsgi:app" ]

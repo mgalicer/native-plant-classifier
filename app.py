@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 @app.route("/sms", methods=['POST'])
 def sms_reply():
+    print("got a request")
     # initalize messaging response object 
     resp = MessagingResponse()
 
@@ -42,6 +43,11 @@ def sms_reply():
     # return a message to the user telling them what kind of plant is in the photo!
     resp.message(resStr)
     return str(resp)
+
+@app.route("/", methods=['GET'])
+def home():
+    print("got a get request")
+    return "Hello, World!"
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=80)

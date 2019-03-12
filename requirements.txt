@@ -4,3 +4,4 @@ requests
 torch
 torchvision
 fastai==1.0.44
+gunicorn

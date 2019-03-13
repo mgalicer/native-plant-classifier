@@ -7,9 +7,9 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 FROM base
 
-COPY --from=builder /install /usr/local
-WORKDIR /app
+COPY --from=builder /usr/local /usr/local
 COPY . /app
+WORKDIR /app
 
 EXPOSE 80
 

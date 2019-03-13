@@ -11,6 +11,6 @@ COPY --from=builder /usr/local /usr/local
 COPY . /app
 WORKDIR /app
 
-EXPOSE 80
+EXPOSE 8080
 
-CMD [ "gunicorn",  "wsgi:app" ]
+CMD [ "gunicorn", "-b", ":8080", "wsgi:app" ]
